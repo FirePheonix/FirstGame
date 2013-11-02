@@ -5,7 +5,9 @@ var DPC = parseInt(localStorage.DPC) || 1;
 
 var ConUpPrice = parseInt(localStorage.ConUpPrice) || 2000;
 var Company2 = parseInt(localStorage.Company2) || 1;
-var CMPC = parseInt(localStorage.CMPC) || 1;
+
+var MalUpPrice = parseInt(localStorage.MalUpPrice) || 10000; 
+var Mall2 = parseInt(localStorage.Mall2) || 1;
 
 var G5 = 0;
 var G100 = 0;
@@ -22,7 +24,7 @@ var MallPrice = parseInt(localStorage.MallPrice) || 1000;
 
 updateScreen();
 
-function tutorial(){
+function tutorial() {
 	alert("	 Your goal is to make people spend money on products \(or other things\)and you get paid MONEY!!!! HF GL!!");
 }
 
@@ -34,7 +36,9 @@ function Reset(){
 
 	ConUpPrice = 2000;
 	Company2 = 1;
-	CMPC = 1;
+
+	MalUpPrice = 10000; 
+	Mall2 = 1;
 
 	Company = 0;
 	CompanyPrice = 5;
@@ -50,7 +54,7 @@ function Reset(){
 setInterval(function() {
 	Money = Money + 1;
 	Money = Money + (Company * 1 * Company2);
-	Money = Money + (Mall * 100);
+	Money = Money + (Mall * 100 * Mall2);
 	console.log(Company * 1 * Company2);
 	SAV();
 	updateScreen();
@@ -64,13 +68,17 @@ function updateScreen() {
 	document.getElementById('mall').innerHTML = " You have " + format(Mall) + " malls.";	
 }
 
-function ClickMoney2price(){
-	alert(ClnUpPrice);
+function ClickMoney2price() {
+	alert(format(ClnUpPrice));
 }
 
 //below the 2 functions are the extra money you get per click 
-function CompanyMoney2price(){
-	alert(ConUpPrice);
+function CompanyMoney2price() {
+	alert(format(ConUpPrice));
+}
+
+function MallMoney2price() {
+	alert(format(MalUpPrice));
 }
 
 function ClickMoney2() {
@@ -102,14 +110,20 @@ function CompanyMoney2() {
 	updateScreen();
 }
 
-function CompanyMoney() {
-	Company = Company * Company2;
+function MallMoney2() {
+	if (Money < MalUpPrice) {
+		console.log('Not enough money!!!');
+		return;
+	}
+	Mall2 = Mall2 + Mall2;
+	Money = Money - MalUpPrice;
+	MalUpPrice = MalUpPrice * 10;
 	updateScreen();
+
 }
 
-
 //gamble away 5 dollars function
-function Gamble5(){
+function Gamble5() {
 	if (Money >= 5) {
 		G5 = Math.random() * 10;
 		G5 = Math.round(G5);
@@ -119,7 +133,7 @@ function Gamble5(){
 	}
 }
 
-function Gamble100(){
+function Gamble100() {
 	if (Money >= 100) {
 		G100 = Math.random() * 200;
 		G100 = Math.round(G100);
@@ -129,7 +143,7 @@ function Gamble100(){
 	}
 }
 
-function Gamble10T(){
+function Gamble10T() {
 	if (Money >= 10000) {
 		G10T = Math.random() * 20000;
 		G10T = Math.round(G10T);
@@ -139,7 +153,7 @@ function Gamble10T(){
 	}
 }
 
-function Gamble10M(){
+function Gamble10M() {
 	if (Money >= 10000000) {
 		G10M = Math.random() * 20000000;
 		G10M = Math.round(G10M);
@@ -149,7 +163,7 @@ function Gamble10M(){
 	}
 }
 
-function Gamble10B(){
+function Gamble10B() {
 	if (Money >= 10000000000) {
 		G10B = Math.random() * 20000000000;
 		G10B = Math.round(G10B);
@@ -159,7 +173,7 @@ function Gamble10B(){
 	}
 }
 
-function Gamble10Tr(){
+function Gamble10Tr() {
 	if (Money >= 10000000000000) {
 		G10Tr = Math.random() * 20000000000000;
 		G10Tr = Math.round(G10Tr);
@@ -169,7 +183,7 @@ function Gamble10Tr(){
 	}
 }
 
-function SAV(){
+function SAV() {
 	localStorage.Money = Money;
 	localStorage.Company = Company;
 	localStorage.CompanyPrice = CompanyPrice;
@@ -177,9 +191,10 @@ function SAV(){
 	localStorage.ClnUpPrice = ClnUpPrice;
 	localStorage.ConUpPrice = ConUpPrice;
 	localStorage.Company2 = Company2;
-	localStorage.CMPC = CMPC;
 	localStorage.Mall = Mall;
 	localStorage.MallPrice = MallPrice;
+	localStorage.MalUpPrice = MalUpPrice;
+	localStorage.Mall2 = Mall2;
 }
 
 function format(str) { 
