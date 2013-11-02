@@ -1,0 +1,72 @@
+.upgradebuttonprice{
+	padding: 3px 10px;
+	width: 250px; 
+	float: right; 
+	font-size: 15px;
+	border: 1px solid gray;
+	border-radius: 4px;
+	margin: 5px;
+	text-align: center;
+	color: #005C00;
+	background-color: #19D119;
+	-webkit-user-select: none;
+}
+.upgradebuttonprice:hover {
+	background-color: #66FF33;
+	color: #336600;
+	cursor: pointer;		
+}
+}
+.upgradebutton {
+	padding: 3px 10px;
+	/* width: 250px; */
+	font-size: 15px;
+	border: 1px solid gray;
+	border-radius: 4px;
+	margin: 5px;
+	text-align: center;
+	color: #005C00;
+	background-color: #66FF33;
+	-webkit-user-select: none;
+}
+.upgradebutton:hover {
+	background-color: #19D119;
+	color: #336600;
+	cursor: pointer;		
+}
+.button {
+	padding: 3px 10px;
+	width: 40px; 
+	float: right; 
+	font-size: 15px;
+	border: 1px solid gray;
+	border-radius: 4px;
+	margin: 5px;
+	text-align: center;
+	color: #005C00;
+	background-color: #66FF33;
+	-webkit-user-select: none;
+}
+.button:hover {
+	background-color: #19D119;
+	color: #336600;
+	cursor: pointer;		
+}
+.my-button {
+	float: left; 
+	width: 100px; 
+	height: 110px; 
+	font-size: 30px;
+	border: 1px solid gray;
+	border-radius: 4px;
+	margin: 5px;
+	text-align: center;
+	color: #005C00;
+	background-color: #66FF33;
+	-webkit-user-select: none;
+}
+.my-button:hover {
+	background-color: #19D119;
+	color: #336600;
+	cursor: pointer;
+}
