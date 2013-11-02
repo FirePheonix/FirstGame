@@ -1,0 +1,15 @@
+<div id="SWordsA" style="font-size: 100px; text-align: center; padding-top: 40px"></div>
+
+<script>
+var a = ["can", "fun", "you", "father", "seven", "mother", "like", "even", "see", "odd"];
+var i = 0;
+function aa(){
+	i = i + 1;
+	if (i >= a.length) {
+		i = 0;
+	}
+	document.getElementById('SWordsA').innerHTML = a[i];
+}
+
+setInterval(aa, 500);
+</script>
