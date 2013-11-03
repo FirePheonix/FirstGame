@@ -1,5 +1,7 @@
 var Money = parseInt(localStorage.Money) || 100;
 
+var DPS = parseInt(localStorage.DPS) || 1;
+
 var ClnUpPrice = parseInt(localStorage.ClnUpPrice) || 1000;
 var DPC = parseInt(localStorage.DPC) || 1;
 
@@ -66,6 +68,11 @@ function updateScreen() {
 	document.getElementById('companyprice').innerHTML =  format(CompanyPrice) + " dollars for next company.";		
 	document.getElementById('mallprice').innerHTML =  format(MallPrice) + " dollars for next mall.";
 	document.getElementById('mall').innerHTML = " You have " + format(Mall) + " malls.";	
+	document.getElementById('DPS').innerHTML = " Dollars per second : " + format(DPS);	
+}
+
+function DPSCounter() {
+
 }
 
 function ClickMoney2price() {
@@ -94,8 +101,7 @@ function ClickMoney2() {
 
 // Dpc is the dollars per click reason for future dollar upgrades
 function ClickMoney() {
-	Money = Money + DPC;
-	updateScreen();
+ 	updateScreen();
 }
 
 //company upgrades
@@ -208,7 +214,7 @@ function BCompany() {
 	if (Money >= CompanyPrice) {
 		Company = Company + 1;
 		Money = Money - CompanyPrice;
-		CompanyPrice = Company * (5 * 1.115);
+		CompanyPrice = 5 * (Company * 1.1155 - 1) / 0.10;
 		updateScreen();
 		CompanyPrice = Math.round(CompanyPrice);
 		updateScreen();
@@ -220,7 +226,7 @@ function SCompany() {
 	if (Company > 0) {
 		Company = Company - 1;
 		Money = Money + 5;
-		CompanyPrice = Company * (5 * 1.115);
+		CompanyPrice = 5 * (Company * 1.1155 - 1) / 0.10;
 		CompanyPrice = Math.round(CompanyPrice);
 		updateScreen();
 	}
@@ -231,7 +237,7 @@ function BMall() {
 	if (Money >= MallPrice) {
 		Mall = Mall + 1;
 		Money = Money - MallPrice;
-		MallPrice = Mall * (1000 * 1.115);
+		MallPrice = 1000 * (Mall * 1.1155 - 1) / 0.10;
 		MallPrice = Math.round(MallPrice);
 		updateScreen();
 	}
@@ -241,7 +247,7 @@ function SMall() {
 	if (Mall > 0) {
 		Mall = Mall - 1;
 		Money = Money + 1000;
-		MallPrice = Mall * (1000 * 1.115);
+		MallPrice = 1000 * (Mall * 1.1155 - 1) / 0.10;
 		MallPrice = Math.round(MallPrice);
 		updateScreen();
 	}
